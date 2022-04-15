@@ -73,8 +73,8 @@ int main(){
             win.wait_for_button();
 
             //5.
-            vector<int>coordinate;
-            for (int i = 0; i <= 800; i+=100)              //i*100 
+            vector<int>coordinate;                         //i*100 
+            for (int i = 0; i <= 800; i+=100)              
             {
                 coordinate.push_back(i);
             }
@@ -85,7 +85,7 @@ int main(){
                 r_coordinate = rand() % 8;
                 r_coordinate2 = rand() % 8;
                 Image vibe {Point{coordinate[r_coordinate],coordinate[r_coordinate2]},"vibe11.jpg"}; 
-                win.attach(vibe);
+                win.attach(vibe);                          //attach
                 win.set_label("My window #5");
                 win.wait_for_button();
             }
