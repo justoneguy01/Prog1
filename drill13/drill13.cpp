@@ -14,7 +14,6 @@ image. Don’t obscure the red squares.
 5. Add a 100-by-100 image. Have it move around from square to square when you click the “Next” button. Just put
 wait_for_button() in a loop with some code that picks a new square for your image.*/
 
-
 //g++ drill13.cpp ../header/Graph.cpp ../header/Window.cpp ../header/GUI.cpp ../header/Simple_window.cpp -o drill13 `fltk-config --ldflags --use-images`
 
 #include "../header/Graph.h"
