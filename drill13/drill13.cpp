@@ -28,67 +28,67 @@ int main(){
     try
     {
 
-        //1.
-        Point tl {500,0};
-        Simple_window win {tl,800,1000,"My window #1"};
-        win.wait_for_button();
-
-        //2.
-        Lines grid;
-        int x = 800;
-        int y = 800;
-
-        for (int i = 0; i <= x; i+=100)
-        {
-            grid.add(Point(0,i), Point(x, i));          //(x)
-        }
-        for (int i = 0; i <= y; i+=100)
-        {
-            grid.add(Point(i,0), Point(i, y));          //(y)
-        }
-        win.attach(grid); 
-        win.set_label("My window #2");
-        win.wait_for_button();
-
-        //3.
-        Vector_ref<Rectangle> rects;
-        for (int i = 0; i < 8; i++)
-        {
-            rects.push_back(new Rectangle{Point{i*100,i*100},100,100});
-            rects[i].set_fill_color(Color::red);
-            //rects[i].set_color(Color::invisible);
-            win.attach(rects[i]);                
-        }
-        win.set_label("My window #3");
-        win.wait_for_button();
-
-        //4. 
-        Image vibe_1 {Point{0,400},"vibe22.jpg"};
-        Image vibe_2 {Point{400,600},"vibe22.jpg"};
-        Image vibe_3 {Point{600,200},"vibe22.jpg"};
-        win.attach(vibe_1);
-        win.attach(vibe_2);
-        win.attach(vibe_3);
-        win.set_label("My window #4");
-        win.wait_for_button();
-
-        //5.
-        vector<int>coordinate;
-        for (int i = 0; i <= 800; i+=100)              //i*100 
-        {
-            coordinate.push_back(i);
-        }
-        int r_coordinate;                              //r_index
-        int r_coordinate2;   
-        while(true)
-        {
-            r_coordinate = rand() % 8;
-            r_coordinate2 = rand() % 8;
-            Image vibe {Point{coordinate[r_coordinate],coordinate[r_coordinate2]},"vibe11.jpg"}; 
-            win.attach(vibe);
-            win.set_label("My window #5");
+            //1.
+            Point tl {500,0};
+            Simple_window win {tl,800,1000,"My window #1"};
             win.wait_for_button();
-        }
+
+            //2.
+            Lines grid;
+            int x = 800;
+            int y = 800;
+
+            for (int i = 0; i <= x; i+=100)
+            {
+                grid.add(Point(0,i), Point(x, i));          //(x)
+            }
+            for (int i = 0; i <= y; i+=100)
+            {
+                grid.add(Point(i,0), Point(i, y));          //(y)
+            }
+            win.attach(grid); 
+            win.set_label("My window #2");
+            win.wait_for_button();
+
+            //3.
+            Vector_ref<Rectangle> rects;
+            for (int i = 0; i < 8; i++)
+            {
+                rects.push_back(new Rectangle{Point{i*100,i*100},100,100});
+                rects[i].set_fill_color(Color::red);
+                //rects[i].set_color(Color::invisible);
+                win.attach(rects[i]);                
+            }
+            win.set_label("My window #3");
+            win.wait_for_button();
+
+            //4. 
+            Image vibe_1 {Point{0,400},"vibe22.jpg"};
+            Image vibe_2 {Point{400,600},"vibe22.jpg"};
+            Image vibe_3 {Point{600,200},"vibe22.jpg"};
+            win.attach(vibe_1);
+            win.attach(vibe_2);
+            win.attach(vibe_3);
+            win.set_label("My window #4");
+            win.wait_for_button();
+
+            //5.
+            vector<int>coordinate;
+            for (int i = 0; i <= 800; i+=100)              //i*100 
+            {
+                coordinate.push_back(i);
+            }
+            int r_coordinate;                              //r_index
+            int r_coordinate2;   
+            while(true)
+            {
+                r_coordinate = rand() % 8;
+                r_coordinate2 = rand() % 8;
+                Image vibe {Point{coordinate[r_coordinate],coordinate[r_coordinate2]},"vibe11.jpg"}; 
+                win.attach(vibe);
+                win.set_label("My window #5");
+                win.wait_for_button();
+            }
 
     }
     catch(exception & e){
