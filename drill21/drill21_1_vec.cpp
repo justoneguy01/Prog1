@@ -108,6 +108,7 @@ void print_vector(T& t){
 
 int main(){
     
+    //1.
     vector<Item> vi;
 
     ifstream file;
