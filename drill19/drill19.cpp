@@ -44,8 +44,8 @@ struct S {
 		S (T vv = 0) : val{vv}{}; 			
 		T& get();
 		void set(T new_val){val=new_val;}	//set
-		void operator=(const T& S);			//operator= 
-		const T& get() const;				//const get 
+		void operator=(const T& S);		//(set) operator= 
+		const T& get() const;			//const get 
 	private: 
 		
 		T val;
@@ -61,7 +61,7 @@ const T& S<T>::get() const{
 	return val;
 }
 
-template<typename T>					//operator= 
+template<typename T>					//(set)operator= 
 void S<T>::operator=(const T& s){
 	val = s;
 }
@@ -149,9 +149,9 @@ int main(){
 	cout << "S<double> : " << sd2.get() << endl;
 	cout << "S<string> : " << str.get() << endl;
 
-    cout << "Vector<int>: (format: { val1, val2, val3 }) ";
-    vector<int> vi2;
-    read_val(vi2);
-    S<vector<int>> svi2 {vi2};
+   	cout << "Vector<int>: (format: { val1, val2, val3 }) ";
+   	vector<int> vi2;
+   	read_val(vi2);
+   	S<vector<int>> svi2 {vi2};
 	cout << "S<vector<int>> read: " << svi2.get() << '\n';
 }
