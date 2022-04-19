@@ -128,12 +128,12 @@ int main(){
 	sd.operator=( 42.1);
 	cout << "S<double> : " << sd.get() << endl;
 
-	cout << "\nEnter an intiger: " <<endl;
+	cout << "\nEnter an integer: " <<endl;
 	int ii;
 	read_val(ii);
 	S<int> si2 {ii};
 
-	cout << "\nEnter a Double: " <<endl;
+	cout << "\nEnter a double: " <<endl;
 	double dd;
 	read_val(dd);
 	S<double> sd2 {dd};
