@@ -39,15 +39,13 @@ using namespace std;
 
 template<typename T>
 struct S {
-	public:
-		
+	public:	
 		S (T vv = 0) : val{vv}{}; 			
 		T& get();
 		void set(T new_val){val=new_val;}	//set
 		void operator=(const T& S);		//(set) operator= 
 		const T& get() const;			//const get 
-	private: 
-		
+	private: 		
 		T val;
 };
 
