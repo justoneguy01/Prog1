@@ -1,4 +1,4 @@
-//drill15_2(class)
+//drill15_2(struct)
 
 /*
 1. Define a struct Person containing a string name and an int age.
@@ -40,13 +40,13 @@ struct Person
 
 	public:
 	 	Person(){};
-	    Person (string pFirst, string pLast, int pAge)
+	    Person (string first, string last, int age) : f{first}, l{last},a{age}
 	    {
-	    	if (pAge < 0 || pAge > 150)
+	    	if (age < 0 || age > 150)
 	    	{
 	    		throw runtime_error("invalid age");
 	    	}
-	    	string n = pFirst + pLast;
+	    	string n = first + last;
 	    	for (int i = 0; i < n.length(); i++)
 	    	{
 	    		if (n[i] == ';' || n[i] == ':' || n[i] == '"' || n[i] == '[' || n[i] == ']' || n[i] == '*' || n[i] == '&' || n[i] =='^' || n[i] == '%' || n[i] == '$' || n[i] == '#' || n[i] == '@' || n[i] == '!')
@@ -54,9 +54,7 @@ struct Person
 					throw runtime_error ("Invalid name!");
 				}
 	    	}
-	    	f=pFirst;
-		    l=pLast;
-		    a=pAge;
+	  
 	    }
 		string first()const{return f;}
 		string last()const{return l;}
