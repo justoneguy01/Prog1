@@ -103,29 +103,29 @@ int main(){
 
 		//6.
 		cout << "ENTER THE DIMENSION OF THE MULTIPLICATION TABLE : ";
-	    int dim_m, dim_n;
-	    cin >> dim_m >> dim_n;
-	    cout << '\n';
+		int dim_m, dim_n;
+		cin >> dim_m >> dim_n;
+		cout << '\n';
 
-	    Matrix<double,2> mult_table(dim_m,dim_n);
+		Matrix<double,2> mult_table(dim_m,dim_n);
 
-	    for (int i = 0; i < mult_table.dim1(); ++i)
-	    {
-	    	for (int j = 0; j < mult_table.dim2(); ++j)
-	    	{
-	    		 mult_table(i,j)=(j+1)*(i+1); 
-	    	}
-	    }
-	        
-	    for (int i = 0; i < mult_table.dim1(); ++i) 
-	    {
-	    	for (int j = 0; j < mult_table.dim2(); ++j)
-	    	{
-	    		cout << setw(5) << mult_table(i,j);
-	    		
-	    	}
-	    	cout << '\n';
-	    }
+		for (int i = 0; i < mult_table.dim1(); ++i)
+		{
+			for (int j = 0; j < mult_table.dim2(); ++j)
+			{
+				mult_table(i,j)=(j+1)*(i+1); 
+			}
+		}
+		
+		for (int i = 0; i < mult_table.dim1(); ++i) 
+		{
+			for (int j = 0; j < mult_table.dim2(); ++j)
+			{
+				cout << setw(5) << mult_table(i,j);
+
+			}
+			cout << '\n';
+		}
 
 		//7. 
    		cout << "\nENTER 10 COMPLEX NUMBERS (Re, Im): \n";
@@ -150,12 +150,12 @@ int main(){
 		//8.
 		cout << "\nENTER VALUES TO THE (2x3) CUSTOM_MATRIX\n";
 		Matrix<int,2> custom_m (2,3);
-    	for (int i = 0; i < custom_m.dim1(); ++i)
-    	{
-    		for (int j = 0; j < custom_m.dim2(); ++j)
-            cin >> custom_m[i][j];
-    	}
-    	cout << custom_m;
+		for (int i = 0; i < custom_m.dim1(); ++i)
+		{
+			for (int j = 0; j < custom_m.dim2(); ++j)
+		    cin >> custom_m[i][j];
+		}
+		cout << custom_m;
 
 	}
 	catch (exception& e)
