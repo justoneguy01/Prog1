@@ -1,86 +1,132 @@
+//drill21_3_vec.cpp
+
+/*
+1. Read some floating-point values (at least 16 values) from a file into a vector<double> called vd.
+
+2. Output vd to cout.
+
+3. Make a vector vi of type vector<int> with the same number of elements as vd; copy the elements from vd into vi.
+
+4. Output the pairs of (vd[i],vi[i]) to cout, one pair per line.
+
+5. Output the sum of the elements of vd.
+
+6. Output the difference between the sum of the elements of vd and the sum of the elements of vi.
+
+7. There is a standard library algorithm called reverse that takes a sequence (pair of iterators) as arguments; reverse vd, and output vd to cout.
+
+8. Compute the mean value of the elements in vd; output it.
+
+9. Make a new vector<double> called vd2 and copy all elements of vd with values lower than (less than) the mean into vd2.
+
+10. Sort vd; output it again.*/
+
+//g++ drill21_3_vec.cpp -o drill21_3_vec
+
 #include <iostream>
 #include <stdexcept>
 #include <vector>
 #include <fstream>
 #include <numeric>
+#include <string>
+#include <algorithm>
+#include <functional>
+using namespace std;
 
-class Less_than {
-    double v;
-public:
-    Less_than(double vv) : v{vv} { }
+template<typename T>
+void print(const vector<T>& t){
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    for (const auto a : t)
+    {
+        cout<<a<<endl;
+    }
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
+} 
 
-    bool operator()(const double val) { return val < v; }
-};
-
-template<typename C> void print(const C& c, char sep = '\n')
+template<typename T>
+double sum(const vector<T>& t)
 {
-    std::cout << "CONTAINER ELEMENTS:\n"
-              << "===================\n";
-
-    for (const auto ele : c)
-        std::cout << ele << sep;
-
-    std::cout << '\n';
+    double vec_sum;
+    for (const auto a : t)
+        vec_sum += a;
+    return vec_sum;
 }
+int main(){
+   
+    try {   
 
-int main()
-try {
-    const std::string iname {"input_floats.txt"};
-    std::ifstream ifs {iname};
-    if (!ifs) throw std::runtime_error("Could not read from file: " + iname);
+            //1.
+            vector<double> vd;
+            ifstream input {"float.txt"};
+            double value;
+            while (input >> value)
+            vd.push_back(value);
 
-    std::vector<double> vd;
-    for (double d; ifs >> d; )
-        vd.push_back(d);
+            //2.
+            cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+            cout << "Float vector<double>:\n";
+            print(vd); 
+            cout <<"\n";
 
-    print(vd);
+            //3.  
+            vector<int> vi (vd.size());
+            cout << "Float vector<int>:\n";
+            copy(vd.begin(), vd.end(), vi.begin());
+            print(vi); 
 
-    std::vector<int> vi (vd.size());
-    std::copy(vd.begin(), vd.end(), vi.begin());
+            //4.
+            cout<<"\nVector pairs (vd[i],vi[i]):\n";
+            cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+            for (int i = 0; i < vd.size(); ++i)
+            {
+                cout << vd[i]<<"\t\t"<< vi[i]<<endl; 
+            }
 
-    for (int i = 0; i < vd.size(); ++i)
-        std::cout << vd[i] << '\t' << vi[i] << '\n';
+            //5.
+            cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+            cout << "Sum of the elements of vd= " << sum(vd) << endl;
+            cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
 
-    double double_sum = std::accumulate(vd.begin(), vd.end(), 0.0);
+            //6.
+            cout << "Difference sum(vd)-sum(vi)= " << sum(vd)-sum(vi) << endl;
+            cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+            
+            //7.
+            cout << "Reverse(vd): "<<endl;
+            reverse(vd.begin(), vd.end());
+            print(vd);
+            cout <<"\n";
 
-    std::cout << "Sum of vector<double>: " << double_sum << '\n';
+            //8.
+            double vd_mean =sum(vd)/vd.size();
+            cout << "Mean value of vd= " << vd_mean << endl;
+            cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
 
-    double diff_sum =
-        std::inner_product(vd.begin(), vd.end(),
-                vi.begin(),
-                0.0,
-                std::plus<double>(),
-                std::minus<double>());
+            //9.
+            cout << "Elements of vd2: " <<endl;
+            vector<double> vd2;
+            for(auto i: vd)
+            {
+                if (i < vd_mean)
+                {
+                    vd2.push_back(i);
+                }
+            }
+            print(vd2);
+            cout <<"\n";
 
-    std::cout << "The cumulative difference of int(double) truncs is: "
-              << diff_sum << '\n';
-
-    std::reverse(vd.begin(), vd.end());
-
-    print(vd);
-
-    double vd_mean = double_sum / vd.size();
-
-    std::cout << "The mean of vd is: " << vd_mean << '\n';
-
-    std::vector<double> vd2 (vd.size());    // too big?
-
-    auto it = std::copy_if(vd.begin(), vd.end(), vd2.begin(),
-            Less_than(vd_mean));
-    vd2.resize(std::distance(vd2.begin(), it));
-
-    print(vd2);
-
-    std::sort(vd.begin(), vd.end());
-
-    print(vd);
+            //10.
+            cout << "Sorted vd2 elements: " <<endl;
+            sort(vd.begin(),vd.end());
+            print(vd);
+            cout <<"\n";
+    }
+    catch(exception& e) {
+        cerr << "Exception: " << e.what() << '\n';
+        return 1;
+    }
+    catch(...) {
+        cerr << "Unknown exception\n";
+        return 2;
+    }
 }
-catch(std::exception& e) {
-    std::cerr << "Exception: " << e.what() << '\n';
-    return 1;
-}
-catch(...) {
-    std::cerr << "Unknown exception\n";
-    return 2;
-}
-
