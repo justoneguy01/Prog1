@@ -64,23 +64,23 @@ try{
   	map<string, int> msi;
    	
    	//2.
-    msi["Robert"] = 4;
-    msi["Margret"] = 34;
-    msi["Irene"] = 6;
-    msi["Gregory"] = 38;
-    msi["Lyle"] = 64;
-    msi["Anne"] = 62;
-    msi["Barbara"] = 33;
-    msi["Young"] = 24;
-    msi["Turk"] = 13;
-    msi["Chloe"] = 9;
+	msi["Robert"] = 4;
+	msi["Margret"] = 34;
+	msi["Irene"] = 6;
+	msi["Gregory"] = 38;
+	msi["Lyle"] = 64;
+	msi["Anne"] = 62;
+	msi["Barbara"] = 33;
+	msi["Young"] = 24;
+	msi["Turk"] = 13;
+	msi["Chloe"] = 9;
 
-    //3.
-    cout << "=============" << '\n';
-    cout <<"MAP CONTENTS:"<< endl;
-    print(msi);
+        //3.
+        cout << "=============" << '\n';
+        cout <<"MAP CONTENTS:"<< endl;
+        print(msi);
 
-    //4.
+        //4.
 	msi.erase(msi.begin(), msi.end());
 	//print(msi);
 
