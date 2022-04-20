@@ -1,84 +1,121 @@
+//drill21_2_map
+
+/*
+1. Define a map<string,int> called msi.
+
+2. Insert ten (name,value) pairs into it, e.g., msi["lecture"]=21.
+
+3. Output the (name,value) pairs to cout in some format of your choice.
+
+4. Erase the (name,value) pairs from msi.
+
+5. Write a function that reads value pairs from cin and places them in msi.
+
+6. Read ten pairs from input and enter them into msi.
+
+7. Write the elements of msi to cout.
+
+8. Output the sum of the (integer) values in msi.
+
+9. Define a map<int,string> called mis.
+
+10. Enter the values from msi into mis; that is, if msi has an element ("lecture",21), mis should have an element (21,"lecture").
+
+11. Output the elements of mis to cout.*/
+
+//g++ drill21_2_map.cpp -o drill21_2_map
+
 #include <iostream>
 #include <stdexcept>
 #include <map>
 #include <string>
 #include <numeric>
-
 using namespace std;
 
-template<typename K, typename V>
-void print(const map<K,V>& m){
-	for (pair<K,V> i:m)
-	{
-		cout << i.first << '\t' << i.second << endl;
+//3.
+template <typename T,typename U>
+void print(map<T,U>& m){
+
+	cout << "=============" << '\n';
+	for(const auto& a : m){
+
+		cout << a.first << " " << a.second << endl;
 	}
+	cout << "=============" << '\n';
 }
 
-void read_map(map<string,int>& m){
-	string s;
-	int i = 0;
-	while(m.size() < 10){
-		cin >>s>>i;
-		m[s] = i;
-		//m.insert(make_pair(s,i));
-	}
-}
+//5.
+template <typename T,typename U>
+void read(map<T, U>& m) {
 
-template<typename K, typename V>
-int sum(map<K,V>& m){
-	int sum = 0;
-	for (pair<K,V> i:m)
-	{
-		sum += i.second;
-	}
-	return sum;
+    string key;
+    int value;  
+    for (int i = 0; i < 10; i++){
+
+        cin >> key >> value;
+        m.insert(make_pair(key, value));
+    }
 }
 
 int main()
 try{
+	
+	//1.
+  	map<string, int> msi;
+   	
+   	//2.
+    msi["Robert"] = 4;
+    msi["Margret"] = 34;
+    msi["Irene"] = 6;
+    msi["Gregory"] = 38;
+    msi["Lyle"] = 64;
+    msi["Anne"] = 62;
+    msi["Barbara"] = 33;
+    msi["Young"] = 24;
+    msi["Turk"] = 13;
+    msi["Chloe"] = 9;
 
-	map<string, int> msi;
+    //3.
+    cout << "=============" << '\n';
+    cout <<"MAP CONTENTS:"<< endl;
+    print(msi);
 
-	msi["a"] = 2;
-	msi["b"] = 3;
-	msi["abc"] = 4;
-	msi["cd"] = 5;
-	msi["qwert"] = 2;
-	msi["gz"] = 32;
-	msi["tar"] = 12;
-	msi["x"] = 8;
-	msi["xp"] = 7;
-	msi["asd"] = 21;
-	print(msi);
-
-	msi.erase("a");
-	cout << endl << "Egy elem törlése után: " << endl;
-	print(msi);
-
+    //4.
 	msi.erase(msi.begin(), msi.end());
-	cout << endl << "Teljes törlés után: " << endl;
+	//print(msi);
+
+	//6.
+	cout <<"READ:"<< endl;
+	read(msi);
+	cout <<"\nMAP NEW CONTENTS:"<< endl;
+
+	//7.
 	print(msi);
 
-	cout << "Adj meg 10 kulcs érték párt" << endl;
-	read_map(msi);
-	print(msi);
+	//8.
+	int sum =0;
+	for(const auto& a : msi){
 
-	cout << "A számok összege: " << endl;
-	cout << sum(msi) << endl;
+		sum +=a.second;
+	}
+	cout << "Sum of elements: " << sum << endl;
 
-	map<int,string> mis;
-	for (pair<string, int> a : msi)
+	//9.
+	map<int, string> mis;
+
+	//10.
+	for (const auto& a : msi)
 	{
-		mis[a.second] = a.first;
+	   	mis[a.second] = a.first;
 	}
 
-	cout << "mis map: " << endl;
+	//11.
 	print(mis);
-
+        
 } catch(exception& e) {
 	cerr << "Exception: " << e.what() << '\n';
 	return 1;
 } catch(...) {
-	cerr << "Unknown exception" << '\n';
+	cerr << "Unknown exception!" << '\n';
 	return 2;
 }
