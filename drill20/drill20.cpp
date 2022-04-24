@@ -54,6 +54,7 @@ void inc(C& c, int n){
 		i+=n;
 	}
 }
+
 //6.
 template<typename Iter1, typename Iter2>
 Iter2 orai_copy(Iter1 f1, Iter1 e1, Iter2 f2){ //nem értem xd
@@ -123,8 +124,7 @@ int main(){
 	}else{
 		cout << "Not found" << endl;
 	}
-
-	vector<int>::iterator vit;
+	
 	vit = find(vi2.begin(),vi2.end(),27);
 	if (vit != vi2.end())
 	{
