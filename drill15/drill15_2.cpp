@@ -33,13 +33,12 @@ using namespace std;
 struct Person
 {
 	private:
-
-		string f;
-		string l;
-		int a;
+	    string f;
+	    string l;
+	    int a;
 
 	public:
-	 	Person(){};
+	    Person(){};
 	    Person (string first, string last, int age) : f{first}, l{last},a{age}
 	    {
 	    	if (age < 0 || age > 150)
@@ -50,9 +49,9 @@ struct Person
 	    	for (int i = 0; i < n.length(); i++)
 	    	{
 	    		if (n[i] == ';' || n[i] == ':' || n[i] == '"' || n[i] == '[' || n[i] == ']' || n[i] == '*' || n[i] == '&' || n[i] =='^' || n[i] == '%' || n[i] == '$' || n[i] == '#' || n[i] == '@' || n[i] == '!')
-				{
-					throw runtime_error ("Invalid name!");
-				}
+			{
+				throw runtime_error ("Invalid name!");
+			}
 	    	}
 	  
 	    }
