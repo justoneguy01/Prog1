@@ -55,9 +55,9 @@ struct Person
 	    	}
 	  
 	    }
-		string first()const{return f;}
-		string last()const{return l;}
-		int age()const{return a;}
+	    string first()const{return f;}
+	    string last()const{return l;}
+	    int age()const{return a;}
 	
 };
 
