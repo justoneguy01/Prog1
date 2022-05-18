@@ -1,3 +1,16 @@
+//drill16
+
+/*
+1. Make a completely new project with linker settings for FLTK (as described in Appendix D).
+
+2. Using the facilities of Graph_lib, type in the line-drawing program from §16.5 and get it to run.
+
+3. Modify the program to use a pop-up menu as described in §16.7 and get it to run.
+
+4. Modify the program to have a second menu for choosing line styles and get it to run.*/
+
+//g++ drill16.cpp ../header/Graph.cpp ../header/Window.cpp ../header/GUI.cpp ../header/Simple_window.cpp -o drill16 `fltk-config --ldflags --use-images`
+
 #include "../header/Simple_window.h"
 #include "../header/Graph.h"
 
